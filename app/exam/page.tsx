@@ -100,6 +100,8 @@ function Exam() {
     const nextQuestion = () => {
         if (!engine.current) return;
 
+        if (!currentQuestion) return;
+
         const correctAnswer = irregularVerbs.find(v => v[currentQuestion.pickedVerbVersion as keyof VerbForm] === currentQuestion.pickedVerb)?.[currentQuestion.question.verbKey as keyof VerbForm];
 
         const currentQuestionResult: ExamResult = {

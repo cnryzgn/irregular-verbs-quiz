@@ -1,8 +1,10 @@
 "use client"
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 
 export default function DifficultyPage() {
+    const router = useRouter();
     const levels = [
         {
             id: "easy",
@@ -102,7 +104,7 @@ export default function DifficultyPage() {
             // Hard mode must be active
         }
 
-        window.location.href = '/exam'
+        router.push('/exam')
     }
 
     return (

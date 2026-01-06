@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 // Tip tanımlaması (TypeScript için)
 interface ExamQuestion {
@@ -23,12 +24,13 @@ interface ExamQuestion {
 function Result() {
     const [examResult, setExamResult] = useState<ExamQuestion[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const router = useRouter();
 
     useEffect(() => {
         const resultStr = sessionStorage.getItem('userExamResult');
 
         if (!resultStr) {
-            window.location.href = '/difficulty'
+            router.push('/difficulty')
         }
 
         if (resultStr) {
@@ -156,7 +158,7 @@ function Result() {
                     {/* Aksiyon Butonları */}
                     <div className="flex flex-col gap-4">
                         <button
-                            onClick={() => window.location.href = '/difficulty'}
+                            onClick={() => router.push('/difficulty')}
                             className="w-full py-5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-2xl transition-all shadow-lg active:scale-[0.98]"
                         >
                             Try Again

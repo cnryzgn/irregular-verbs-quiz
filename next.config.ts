@@ -1,11 +1,12 @@
 import type { NextConfig } from "next";
-/** @type {import('next').Next} */
+
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: process.env.BASE_PATH || '',
-  assetPrefix: process.env.BASE_PATH || '',
+  // GitHub Pages alt klasör yapısı için repo adını ekledik
+  basePath: '/irregular_verb_quiz',
   images: {
-    unoptimized: true, 
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;

@@ -56,7 +56,8 @@ export function questionUtil(irregularVerbs: VerbForm[]) {
         return {
             pickedVerb: verbValue,
             pickedVerbVersion: verbKey,
-            question
+            question,
+            correctAnswer: verbValue
         }
     }
 
@@ -68,7 +69,7 @@ export function questionUtil(irregularVerbs: VerbForm[]) {
         const exam = []
 
         for (let i: number = 0; i < totalQuestionCount; i++) {
-            exam.push(randomVerbPick(irregularVerbs))
+            exam.push(randomVerbPick())
         }
 
         return exam;

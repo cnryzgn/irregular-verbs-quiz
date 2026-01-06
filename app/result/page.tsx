@@ -142,7 +142,7 @@ function Result() {
                                                     </svg>
                                                     <span className="uppercase opacity-60 mr-2">Correct Answer:</span>
                                                     <span className="text-sm font-bold text-white tracking-wide">
-                                                        {item.correctAnswer}
+                                                        {item.questionData.correctAnswer}
                                                     </span>
                                                 </p>
                                             </div>

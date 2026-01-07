@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 // Tip tanımlaması (TypeScript için)
 interface ExamQuestion {
@@ -169,9 +170,9 @@ function Result() {
                 </div>
             </div>
 
-            <a href="/" className="mt-8 text-slate-500 hover:text-white transition-colors text-sm font-medium underline underline-offset-8">
+            <Link href="/" className="mt-8 text-slate-500 hover:text-white transition-colors text-sm font-medium underline underline-offset-8">
                 Return to Home
-            </a>
+            </Link>
         </div>
     );
 }

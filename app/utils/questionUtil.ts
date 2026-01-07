@@ -57,7 +57,8 @@ export function questionUtil(irregularVerbs: VerbForm[]) {
             pickedVerb: verbValue,
             pickedVerbVersion: verbKey,
             question,
-            correctAnswer: verbValue
+            correctAnswer: verbValue,
+            turkishMeaning: ''
         }
     }
 

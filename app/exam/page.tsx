@@ -324,7 +324,7 @@ function Exam() {
                                     onChange={(e) => setUserAnswer(e.target.value)}
                                     onKeyDown={(e) => {
                                         if (e.key === 'Enter') handleCheck();
-                                        if (e.key === ',' || e.key.toLowerCase() === 'i') {
+                                        if (e.key === ',' || e.key.toLowerCase() === '.') {
                                             if (userAnswer === "") {
                                                 e.preventDefault();
                                                 setShowHint(true);

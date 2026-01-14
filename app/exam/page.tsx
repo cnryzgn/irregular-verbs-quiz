@@ -5,6 +5,7 @@ import { VerbRandomizer, VerbForm, ExamResult, IDifficultyConfig } from "../inte
 import { GameManager } from "../lib/GameManager";
 import { useRouter } from "next/navigation";
 import { checkIsAnswerInvalid, getCorrectVerbAnswer } from "../utils/handleMultiPartAnswer";
+import Loading from '../components/Loading/Loading'
 
 type GameStatus = 'playing' | 'correct' | 'wrong' | 'timeout';
 type GameDiff = 'easy' | 'medium' | 'hard' | 'endless_blitz' | 'endless_zen'
@@ -25,6 +26,7 @@ function Exam() {
     const [userAnswer, setUserAnswer] = useState("");
     const [questionCountTime, setQuestionCountTime] = useState<number | null>()
     const [difficulty, setDifficulty] = useState<GameDiff>('medium')
+    const [isLoading, setIsLoading] = useState(false)
 
     const [quizQuestions, setQuizQuestions] = useState<VerbRandomizer[]>([])
     const [quizType, setQuizType] = useState<string>('')
@@ -105,6 +107,7 @@ function Exam() {
     console.log(quizQuestions);
 
     const nextQuestion = () => {
+        setIsLoading(true)
         if (!engine.current) return;
 
         if (!currentQuestion) return;
@@ -142,11 +145,13 @@ function Exam() {
             if (currentQuestion?.isLastQuestion) {
                 const quizResult = JSON.stringify(engine.current.getExamResult())
                 sessionStorage.setItem('userExamResult', quizResult)
+                setIsLoading(false)
                 router.push('/result');
             } else {
                 if (currentStep < totalSteps) {
                     setCurrentStep(currentStep + 1)
                     setCurrentQuestion(quizQuestions[currentStep])
+                    setIsLoading(false)
                 }
             }
         }
@@ -161,10 +166,11 @@ function Exam() {
             const timerVal = engine.current.getTimerValue();
             setTimeLeft(typeof timerVal === 'number' ? timerVal : 99);
         }
+        setIsLoading(false)
     };
     console.log(quizQuestions);
 
-    if (!currentQuestion) return <div>Loading...</div>;
+    if (!currentQuestion || isLoading) return <div><Loading /></div>;
 
 
     return (

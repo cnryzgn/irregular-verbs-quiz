@@ -5,7 +5,7 @@ export const DIFFICULTY_SETTINGS: Record<'easy' | 'medium' | 'hard' | 'endless_b
         level: 'easy',
         timer: null,
         pointMultiplier: 5,
-        questionCount: 3,
+        questionCount: 10,
         quizType: 'exam'
     },
     medium: {
